@@ -1,0 +1,69 @@
+/* Arcade reward / score hierarchy */
+.score-wrap{position:relative;min-width:150px;}
+#score{font-size:38px;line-height:.95;font-variant-numeric:tabular-nums;letter-spacing:.01em;will-change:transform;}
+#bestScore{margin-top:5px;font:600 9px/1 "Chakra Petch",sans-serif;letter-spacing:.14em;color:rgba(150,160,216,.72);text-transform:uppercase;}
+#bestScore.beaten{color:var(--gold);text-shadow:0 0 12px rgba(255,214,107,.5);}
+#scoreDelta{position:absolute;left:100%;top:17px;margin-left:9px;min-width:70px;text-align:left;font:700 15px/1 "Chakra Petch",sans-serif;color:#fff;opacity:0;pointer-events:none;white-space:nowrap;text-shadow:0 0 12px rgba(124,92,255,.7);}
+#scoreDelta[data-grade="perfect"]{color:var(--aur2);}
+#scoreDelta[data-grade="great"]{color:var(--l3);}
+#scoreDelta[data-grade="good"]{color:var(--l2);}
+
+#comboWrap{top:91px;display:flex;flex-direction:column;align-items:center;pointer-events:none;}
+#comboStatus{font:700 9px/1 "Chakra Petch",sans-serif;letter-spacing:.24em;color:var(--aur2);text-transform:uppercase;margin-bottom:3px;min-height:9px;}
+#multiplier{font-size:62px;line-height:.84;filter:drop-shadow(0 0 12px rgba(124,92,255,.35));}
+#comboNum{margin-top:4px;font-size:12px;letter-spacing:.18em;}
+.mult-ladder{width:118px;height:5px;margin-top:8px;border-radius:9px;background:rgba(255,255,255,.10);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.06) inset;}
+#multProgress{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--aur2),var(--aur1),var(--gold));transition:transform .12s linear;box-shadow:0 0 12px rgba(124,92,255,.65);}
+#multHint{margin-top:5px;font:600 8px/1 "Chakra Petch",sans-serif;letter-spacing:.11em;color:rgba(210,218,255,.68);text-transform:uppercase;}
+
+#rewardBanner{position:absolute;z-index:13;top:178px;left:50%;width:min(86%,360px);transform:translate(-50%,-8px) scale(.96);opacity:0;pointer-events:none;text-align:center;padding:10px 16px;border-radius:15px;border:1px solid rgba(124,92,255,.36);background:linear-gradient(180deg,rgba(17,21,54,.80),rgba(9,11,29,.72));box-shadow:0 8px 28px rgba(0,0,0,.24);backdrop-filter:blur(4px);}
+#rewardBanner.show{animation:rewardIn 1.05s cubic-bezier(.2,.8,.2,1) both;}
+#rewardTitle{display:block;font:700 16px/1.1 "Chakra Petch",sans-serif;letter-spacing:.08em;color:#fff;text-transform:uppercase;}
+#rewardSub{display:block;margin-top:4px;font:600 10px/1.2 "Chakra Petch",sans-serif;letter-spacing:.05em;color:var(--muted);}
+#rewardBanner[data-kind="mult"]{border-color:rgba(255,214,107,.58);box-shadow:0 0 26px rgba(255,214,107,.13),0 8px 28px rgba(0,0,0,.24);}
+#rewardBanner[data-kind="mult"] #rewardTitle,#rewardBanner[data-kind="best"] #rewardTitle{color:var(--gold);}
+#rewardBanner[data-kind="power"],#rewardBanner[data-kind="power-ready"]{border-color:rgba(49,224,208,.55);box-shadow:0 0 30px rgba(49,224,208,.15),0 8px 28px rgba(0,0,0,.24);}
+#rewardBanner[data-kind="power"] #rewardTitle,#rewardBanner[data-kind="power-ready"] #rewardTitle{color:var(--aur2);}
+#rewardBanner[data-kind="miss"]{border-color:rgba(255,93,108,.42);}
+#rewardBanner[data-kind="miss"] #rewardTitle{color:var(--danger);}
+@keyframes rewardIn{0%{opacity:0;transform:translate(-50%,-8px) scale(.96)}16%{opacity:1;transform:translate(-50%,0) scale(1.025)}28%{transform:translate(-50%,0) scale(1)}78%{opacity:1}100%{opacity:0;transform:translate(-50%,-7px) scale(.99)}}
+
+#odBtn{font-size:12px;min-width:126px;transition:transform .14s ease,box-shadow .18s ease,border-color .18s ease;}
+#odBtn.ready{display:block!important;border-color:rgba(255,214,107,.85);background:linear-gradient(180deg,rgba(255,214,107,.26),rgba(124,92,255,.28));box-shadow:0 0 28px rgba(255,214,107,.30);color:#fff;animation:readyPulse .9s ease-in-out infinite;}
+#odBtn.on{display:block!important;background:linear-gradient(180deg,rgba(49,224,208,.38),rgba(124,92,255,.42));border-color:rgba(49,224,208,.85);}
+@keyframes readyPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+
+#stage.combo-hot{box-shadow:0 0 95px rgba(49,224,208,.08) inset;}
+#stage.combo-fire{box-shadow:0 0 110px rgba(124,92,255,.12) inset;}
+#stage.angel-active{box-shadow:0 0 130px rgba(49,224,208,.16) inset;}
+
+.diff .diff-best{margin-top:6px;font:600 9px/1.15 "Chakra Petch",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,214,107,.78);}
+
+.result-head{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 8px;}
+#resultRank{width:54px;height:54px;display:flex;align-items:center;justify-content:center;border-radius:15px;border:1px solid rgba(255,255,255,.17);background:rgba(255,255,255,.06);font:700 34px/1 "Chakra Petch",sans-serif;color:#fff;text-shadow:0 0 18px rgba(124,92,255,.6);}
+#resultRank[data-rank="S"]{color:var(--gold);border-color:rgba(255,214,107,.55);}
+#resultRank[data-rank="A"]{color:var(--aur2);}
+#resultBest{font:700 10px/1.2 "Chakra Petch",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+#resultBest.new-best{color:var(--gold);text-shadow:0 0 14px rgba(255,214,107,.45);}
+#results .res-grid{grid-template-columns:repeat(2,minmax(115px,1fr));max-width:360px;width:100%;gap:9px 18px;}
+#results .res-cell{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.035);}
+.result-head .stars{margin:7px 0 0;font-size:27px;gap:5px;}
+
+@media (pointer:coarse){
+  #score{font-size:34px;}
+  #multiplier{font-size:56px;}
+  #comboWrap{top:88px;}
+  #rewardBanner{top:166px;backdrop-filter:none;}
+  #rewardTitle{font-size:15px;}
+  #stage.combo-hot,#stage.combo-fire,#stage.angel-active{box-shadow:none;}
+}
+@media (max-height:700px){
+  #rewardBanner{top:154px;padding:8px 13px;}
+  #comboWrap{top:82px;}
+  #multiplier{font-size:52px;}
+  .mult-ladder{margin-top:5px;}
+}
+@media (prefers-reduced-motion:reduce){
+  #rewardBanner.show{animation:none;opacity:1;}
+  #odBtn.ready{animation:none;}
+}
