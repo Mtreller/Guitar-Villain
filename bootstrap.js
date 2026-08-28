@@ -3,7 +3,7 @@
   const menu=document.getElementById('menu');
   const play=document.getElementById('playBtn');
   const audio=document.getElementById('audio');
-  const BUILTIN_TRACK='assets/angels-mary-by-the-cross.mp3';
+  const BUILTIN_TRACK='assets/Angels - Mary by the cross.mp3';
 
   function fail(e){
     console.error(e);
@@ -38,7 +38,6 @@
     }catch(e){fail(e);}
   }
 
-  // Prefer the repo-hosted track. GitHub Pages/browser caching makes repeat visits fast.
   audio.addEventListener('loadedmetadata',function(){
     if(!window.__userSongLoaded){
       status.textContent='Track ready · '+Math.round(audio.duration||314)+'s';
