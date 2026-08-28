@@ -1,0 +1,39 @@
+/* Mobile/control layout safety layer.
+   Keep interactive power controls clear of the four fret hit targets. */
+#odBtn{
+  left:50%;
+  right:auto;
+  bottom:calc(env(safe-area-inset-bottom,0px) + clamp(210px,25vh,280px));
+  transform:translateX(-50%);
+  z-index:14;
+  min-width:138px;
+  white-space:nowrap;
+}
+
+/* arcade.css animates the ready state with transform; include the
+   centering translation so pulsing never moves the button into a lane. */
+#odBtn.ready{
+  animation:powerReadyPulse .9s ease-in-out infinite !important;
+}
+@keyframes powerReadyPulse{
+  0%,100%{transform:translateX(-50%) scale(1);}
+  50%{transform:translateX(-50%) scale(1.045);}
+}
+
+@media (pointer:coarse){
+  #odBtn{
+    bottom:calc(env(safe-area-inset-bottom,0px) + clamp(220px,27vh,300px));
+    padding:10px 16px;
+    min-width:148px;
+  }
+}
+
+@media (max-height:700px){
+  #odBtn{
+    bottom:calc(env(safe-area-inset-bottom,0px) + 190px);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  #odBtn.ready{animation:none !important;transform:translateX(-50%);}
+}
