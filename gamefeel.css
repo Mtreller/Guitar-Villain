@@ -1,130 +1,151 @@
 /* ============================================================
-   ORGANIC GAMEFEEL — visual pass 2
-   Physical multiplier badge, Angel Power emblem, authored feedback.
-   Presentation only: no timing/scoring/audio changes.
+   FIRE / EMBER GAMEFEEL
+   Warm reward language: heat, sparks, embers and radiant Angel Power.
    ============================================================ */
 
-/* Multiplier becomes a physical enamel badge rather than floating text. */
+/* Remove the last cool-neon accents from the gameplay HUD. */
+#odFill{
+  background:linear-gradient(90deg,#9b2f18,#ef6a24 42%,#ffc15c 72%,#fff0b0)!important;
+  box-shadow:0 0 9px rgba(255,116,38,.34)!important;
+}
+
+/* Multiplier = forged-metal badge that heats up with streak. */
 #comboWrap{
-  top:88px;
-  width:138px;
-  left:50%;
-  right:auto;
-  transform:translateX(-50%);
-  padding:7px 10px 9px;
+  top:88px;width:138px;left:50%;right:auto;transform:translateX(-50%);
+  padding:7px 10px 9px;overflow:visible;
   border-radius:46% 46% 38% 38% / 42% 42% 58% 58%;
   background:
-    radial-gradient(circle at 36% 24%,rgba(255,255,255,.16),transparent 24%),
-    linear-gradient(155deg,rgba(72,47,42,.92),rgba(27,22,28,.96) 58%,rgba(13,13,18,.98));
-  border:2px solid rgba(225,171,112,.38);
-  box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -5px 12px rgba(0,0,0,.20);
+    radial-gradient(circle at 36% 24%,rgba(255,245,219,.13),transparent 24%),
+    linear-gradient(155deg,rgba(76,43,34,.96),rgba(28,20,22,.98) 58%,rgba(12,11,13,.99));
+  border:2px solid rgba(217,139,78,.42);
+  box-shadow:0 8px 20px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,239,211,.07),inset 0 -5px 12px rgba(0,0,0,.24);
 }
 #comboWrap::before,#comboWrap::after{
-  content:"";
-  position:absolute;
-  top:13px;
-  width:17px;height:26px;
-  border:2px solid rgba(225,171,112,.26);
-  border-radius:50%;
-  z-index:-1;
-}
-#comboWrap::before{left:-10px;transform:rotate(-18deg);}
-#comboWrap::after{right:-10px;transform:rotate(18deg);}
-#comboStatus{color:#e8bc84;letter-spacing:.18em;text-shadow:none;}
-#multiplier{
-  color:#fff2d4!important;
-  background:none!important;
-  -webkit-text-fill-color:initial!important;
-  filter:none!important;
-  text-shadow:0 2px 0 rgba(83,45,25,.75),0 0 13px rgba(239,166,91,.22)!important;
-}
-#comboNum{color:rgba(242,221,190,.60);}
-#comboNum b{color:#fff0d0;}
-.mult-ladder{
-  width:104px;height:7px;border-radius:8px;
-  background:rgba(8,8,12,.72);
-  border:1px solid rgba(232,187,132,.18);
-  box-shadow:inset 0 2px 4px rgba(0,0,0,.42);
-}
-#multProgress{
-  border-radius:8px;
-  background:linear-gradient(90deg,#e7b267,#ffe2a1,#f09959);
-  box-shadow:0 0 8px rgba(243,170,89,.26),inset 0 1px 0 rgba(255,255,255,.45);
-}
-#multHint{color:rgba(238,210,174,.56);letter-spacing:.08em;}
-
-/* Angel Power becomes an emblem/button rather than a generic pill. */
-#odBtn{
-  min-width:154px;
-  min-height:48px;
-  padding:11px 24px 11px;
-  border-radius:20px 20px 28px 28px / 18px 18px 30px 30px;
-  border:2px solid rgba(232,196,146,.42);
+  content:"";position:absolute;z-index:-1;pointer-events:none;opacity:.25;
+  width:34px;height:48px;bottom:-5px;
   background:
-    radial-gradient(circle at 50% 22%,rgba(255,255,255,.18),transparent 28%),
-    linear-gradient(160deg,rgba(66,45,54,.96),rgba(24,22,30,.98) 62%,rgba(12,13,18,.98));
-  color:#f7e9cf;
-  text-shadow:0 1px 0 #000;
-  box-shadow:0 8px 20px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.09);
-  letter-spacing:.11em;
+    radial-gradient(ellipse at 50% 88%,rgba(255,211,110,.75) 0 12%,rgba(255,115,33,.52) 30%,rgba(174,38,14,.28) 53%,transparent 72%);
+  filter:blur(.2px);
+  transform-origin:50% 100%;
+}
+#comboWrap::before{left:-17px;transform:rotate(-14deg) scale(.72);}
+#comboWrap::after{right:-17px;transform:rotate(14deg) scale(.72);}
+#comboStatus{color:#df9a57;letter-spacing:.18em;text-shadow:none;}
+#multiplier{
+  color:#ffe5b4!important;background:none!important;-webkit-text-fill-color:initial!important;filter:none!important;
+  text-shadow:0 2px 0 rgba(86,37,20,.80),0 0 12px rgba(255,119,35,.18)!important;
+}
+#comboNum{color:rgba(239,209,177,.62);}
+#comboNum b{color:#ffe5bc;}
+.mult-ladder{width:104px;height:7px;border-radius:8px;background:rgba(7,6,7,.78);border:1px solid rgba(219,137,74,.20);box-shadow:inset 0 2px 4px rgba(0,0,0,.48);}
+#multProgress{border-radius:8px;background:linear-gradient(90deg,#a93619,#ef7028,#ffc45d,#fff0b0);box-shadow:0 0 8px rgba(255,106,34,.24),inset 0 1px 0 rgba(255,255,255,.36);}
+#multHint{color:rgba(229,190,151,.57);letter-spacing:.08em;}
+
+#stage.combo-hot #comboWrap{
+  border-color:rgba(238,132,58,.60);
+  box-shadow:0 8px 20px rgba(0,0,0,.30),0 0 18px rgba(225,78,24,.12),inset 0 1px 0 rgba(255,240,214,.09),inset 0 -6px 14px rgba(72,22,12,.30);
+  animation:heatPulse 1.15s ease-in-out infinite;
+}
+#stage.combo-hot #comboWrap::before,#stage.combo-hot #comboWrap::after{opacity:.58;animation:flameFlicker .52s ease-in-out infinite alternate;}
+#stage.combo-hot #multiplier{color:#ffd08a!important;text-shadow:0 2px 0 #6b2a14,0 0 14px rgba(255,107,31,.42)!important;}
+
+#stage.combo-fire #comboWrap{
+  border-color:rgba(255,182,78,.86);
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,229,153,.18),transparent 27%),
+    linear-gradient(155deg,rgba(111,46,25,.97),rgba(46,21,19,.99) 56%,rgba(16,12,13,.99));
+  box-shadow:0 8px 22px rgba(0,0,0,.34),0 0 25px rgba(255,83,20,.24),0 0 46px rgba(255,150,40,.10),inset 0 1px 0 rgba(255,247,219,.14);
+  animation:heatPulse .70s ease-in-out infinite;
+}
+#stage.combo-fire #comboWrap::before,#stage.combo-fire #comboWrap::after{opacity:.95;filter:blur(.4px);animation:flameFlicker .34s ease-in-out infinite alternate;}
+#stage.combo-fire #multiplier{color:#fff0b7!important;text-shadow:0 2px 0 #7a2b11,0 0 11px rgba(255,225,127,.55),0 0 25px rgba(255,70,18,.38)!important;}
+#stage.combo-fire #comboStatus{color:#ffb653;}
+
+/* Angel Power = white-hot / sacred fire rather than teal sci-fi energy. */
+#odBtn{
+  min-width:154px;min-height:48px;padding:11px 24px;
+  border-radius:20px 20px 28px 28px / 18px 18px 30px 30px;
+  border:2px solid rgba(224,157,91,.46);
+  background:radial-gradient(circle at 50% 22%,rgba(255,238,203,.13),transparent 28%),linear-gradient(160deg,rgba(72,42,36,.97),rgba(24,19,22,.99) 62%,rgba(10,10,12,.99));
+  color:#f7e3c7;text-shadow:0 1px 0 #000;box-shadow:0 8px 20px rgba(0,0,0,.31),inset 0 1px 0 rgba(255,255,255,.08);letter-spacing:.11em;
 }
 #odBtn::before,#odBtn::after{
-  content:"";
-  position:absolute;
-  top:10px;
-  width:25px;height:29px;
-  border:2px solid rgba(229,188,139,.40);
-  background:linear-gradient(180deg,rgba(237,203,157,.11),rgba(73,50,61,.12));
-  z-index:-1;
+  content:"";position:absolute;top:8px;width:27px;height:34px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 86%,rgba(255,205,105,.42),rgba(255,94,28,.18) 44%,transparent 70%);
 }
-#odBtn::before{left:-17px;border-radius:80% 16% 62% 30%;transform:rotate(-18deg);}
-#odBtn::after{right:-17px;border-radius:16% 80% 30% 62%;transform:rotate(18deg);}
+#odBtn::before{left:-19px;border-radius:80% 16% 62% 30%;transform:rotate(-18deg);}
+#odBtn::after{right:-19px;border-radius:16% 80% 30% 62%;transform:rotate(18deg);}
 #odBtn.ready{
-  border-color:rgba(255,217,137,.78)!important;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(255,244,186,.30),transparent 29%),
-    linear-gradient(160deg,rgba(111,67,40,.96),rgba(62,37,49,.98) 55%,rgba(24,22,30,.98))!important;
-  box-shadow:0 0 20px rgba(255,194,95,.22),0 8px 20px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.12)!important;
+  border-color:rgba(255,188,79,.82)!important;
+  background:radial-gradient(circle at 50% 18%,rgba(255,234,155,.26),transparent 30%),linear-gradient(160deg,rgba(123,53,25,.98),rgba(57,28,26,.99) 56%,rgba(21,16,18,.99))!important;
+  box-shadow:0 0 20px rgba(255,106,28,.20),0 8px 20px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.12)!important;
 }
 #odBtn.on{
-  border-color:rgba(117,236,220,.78)!important;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(216,255,247,.34),transparent 29%),
-    linear-gradient(160deg,rgba(38,111,103,.96),rgba(54,48,92,.98) 58%,rgba(20,22,31,.98))!important;
-  color:#eafffa;
+  border-color:rgba(255,239,170,.94)!important;
+  background:radial-gradient(circle at 50% 16%,rgba(255,255,226,.42),transparent 28%),linear-gradient(160deg,rgba(178,82,29,.99),rgba(88,39,22,.99) 55%,rgba(34,19,18,.99))!important;
+  color:#fff7dc!important;
+  box-shadow:0 0 18px rgba(255,237,164,.34),0 0 35px rgba(255,91,25,.24),0 8px 20px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.18)!important;
+  animation:angelFlare .72s ease-in-out infinite!important;
 }
+#stage.angel-active #comboWrap{
+  border-color:rgba(255,238,171,.94);
+  background:radial-gradient(circle at 50% 18%,rgba(255,255,222,.24),transparent 30%),linear-gradient(155deg,rgba(139,65,27,.99),rgba(55,25,22,.99) 58%,rgba(14,12,13,.99));
+  box-shadow:0 0 20px rgba(255,240,172,.28),0 0 42px rgba(255,84,24,.22),0 8px 22px rgba(0,0,0,.34);
+}
+#stage.angel-active #multiplier{color:#fff8d2!important;text-shadow:0 0 9px rgba(255,255,213,.75),0 0 23px rgba(255,129,35,.50),0 2px 0 #7a2b10!important;}
 
-/* Reward banners become quick arcade stamps, not glass notifications. */
+/* Reward callouts ignite briefly instead of looking like neon toasts. */
 #rewardBanner{
-  width:auto;max-width:82%;
-  padding:8px 17px 9px;
+  width:auto;max-width:82%;padding:8px 17px 9px;overflow:visible;
   border-radius:8px 14px 8px 14px;
-  background:linear-gradient(155deg,rgba(64,38,35,.94),rgba(22,19,24,.96));
-  border:1px solid rgba(238,187,127,.38);
-  border-left:3px solid rgba(238,187,127,.78);
-  box-shadow:0 7px 18px rgba(0,0,0,.25);
-  backdrop-filter:none;
+  background:linear-gradient(155deg,rgba(75,37,29,.97),rgba(22,17,19,.98));
+  border:1px solid rgba(231,145,75,.42);border-left:3px solid rgba(241,122,45,.88);
+  box-shadow:0 7px 18px rgba(0,0,0,.28);backdrop-filter:none;
 }
-#rewardTitle{font-size:15px;color:#fff0d2;letter-spacing:.07em;}
-#rewardSub{color:rgba(239,217,186,.68);}
-#rewardBanner[data-kind="power"],#rewardBanner[data-kind="power-ready"]{
-  border-color:rgba(100,223,211,.44);
-  border-left-color:rgba(100,223,211,.82);
+#rewardBanner::before{
+  content:"";position:absolute;inset:-18px -28px;z-index:-1;pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse at 50% 70%,rgba(255,225,133,.34) 0 8%,rgba(255,105,29,.28) 25%,rgba(168,39,15,.12) 48%,transparent 70%);
+  filter:blur(3px);transform:scale(.72);
 }
-#rewardBanner[data-kind="miss"]{
-  opacity:.82;
-  background:linear-gradient(155deg,rgba(67,30,34,.90),rgba(26,18,22,.94));
-}
+#rewardBanner.show::before{animation:rewardFlare .72s cubic-bezier(.2,.8,.2,1);}
+#rewardTitle{font-size:15px;color:#ffe8bd;letter-spacing:.07em;text-shadow:0 1px 0 rgba(66,25,13,.8);}
+#rewardSub{color:rgba(237,202,166,.70);}
+#rewardBanner[data-kind="mult"],#rewardBanner[data-kind="streak"]{border-color:rgba(255,169,72,.62);border-left-color:#ff7b29;background:linear-gradient(155deg,rgba(108,44,24,.98),rgba(34,20,20,.98));}
+#rewardBanner[data-kind="perfect"]{border-color:rgba(255,214,120,.62);border-left-color:#ffd36d;}
+#rewardBanner[data-kind="best"]{border-color:rgba(255,226,143,.72);border-left-color:#ffe18c;}
+#rewardBanner[data-kind="power"],#rewardBanner[data-kind="power-ready"]{border-color:rgba(255,224,139,.72);border-left-color:#ffcf61;background:linear-gradient(155deg,rgba(125,58,27,.98),rgba(39,23,21,.98));}
+#rewardBanner[data-kind="power-end"]{border-color:rgba(202,105,56,.42);border-left-color:#bd5d34;}
+#rewardBanner[data-kind="miss"]{opacity:.82;background:linear-gradient(155deg,rgba(67,28,25,.92),rgba(25,17,19,.96));border-left-color:#8e3a2f;}
 
-/* Score pop should feel printed/stamped rather than software-toast-like. */
-#scoreDelta{font-style:italic;transform:rotate(-3deg);}
+#scoreDelta{font-style:italic;transform:rotate(-3deg);color:#ffe0a8!important;text-shadow:0 2px 0 rgba(71,28,14,.7),0 0 12px rgba(255,100,28,.28)!important;}
+
+@keyframes heatPulse{
+  0%,100%{filter:brightness(1);}
+  50%{filter:brightness(1.08);}
+}
+@keyframes flameFlicker{
+  0%{transform:translateY(2px) scale(.78,.72) rotate(-4deg);filter:blur(.4px) brightness(.92);}
+  100%{transform:translateY(-5px) scale(1.02,1.12) rotate(5deg);filter:blur(.7px) brightness(1.18);}
+}
+@keyframes rewardFlare{
+  0%{opacity:0;transform:scale(.62) translateY(8px);}
+  22%{opacity:1;transform:scale(1.06) translateY(-2px);}
+  58%{opacity:.62;transform:scale(1) translateY(-5px);}
+  100%{opacity:0;transform:scale(1.18) translateY(-11px);}
+}
+@keyframes angelFlare{
+  0%,100%{filter:brightness(1);}
+  50%{filter:brightness(1.14);}
+}
 
 @media (pointer:coarse){
   #comboWrap{top:86px;width:126px;padding:6px 8px 8px;}
   #multiplier{font-size:52px!important;}
   #odBtn{min-width:148px;min-height:46px;font-size:11px;}
+  #comboWrap::before,#comboWrap::after{width:27px;height:39px;}
+  #rewardBanner::before{filter:blur(2px);}
 }
-
-@media (max-height:700px){
-  #comboWrap{top:79px;transform:translateX(-50%) scale(.92);}
+@media (max-height:700px){#comboWrap{top:79px;transform:translateX(-50%) scale(.92);}}
+@media (prefers-reduced-motion:reduce){
+  #stage.combo-hot #comboWrap,#stage.combo-fire #comboWrap,#odBtn.on,#comboWrap::before,#comboWrap::after,#rewardBanner.show::before{animation:none!important;}
 }
