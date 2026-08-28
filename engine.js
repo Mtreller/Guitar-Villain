@@ -8,6 +8,7 @@ window.addEventListener('error', function(e){
    ============================================================ */
 const TRACK_URL = 'assets/Angels - Mary by the cross.mp3';
 
+
 /* ============================================================
    SETUP
    ============================================================ */
@@ -46,7 +47,7 @@ function ensureCtx(){
   const AC = window.AudioContext||window.webkitAudioContext;
   if(!AC){ startFallback(); return null; }
   try{
-    actx = new AC({latencyHint:'interactive'});
+    try{ actx = new AC({latencyHint:'interactive'}); }catch(_){ actx = new AC(); }
     gainNode = actx.createGain(); gainNode.gain.value=0.9; gainNode.connect(actx.destination);
     sfxGain = actx.createGain(); sfxGain.gain.value=PERF_MOBILE?0.32:0.45; sfxGain.connect(actx.destination);
     noiseBuf = actx.createBuffer(1, Math.floor(actx.sampleRate*0.20), actx.sampleRate);
@@ -177,7 +178,7 @@ function computeGeometry(){
   const cx = W/2;
   const strikeY = H*0.80;
   const horizonY = H*0.10;
-  const nearHalf = Math.min(W*0.46, 250);
+  const nearHalf = Math.min(W*0.46, 250);      // half-width of highway at strike
   const laneW = (nearHalf*2)/LANES;
   const nearLaneX = [];
   for(let i=0;i<LANES;i++) nearLaneX.push(cx - nearHalf + laneW*(i+0.5));
@@ -185,6 +186,7 @@ function computeGeometry(){
        fretY: H*0.80, fretR: Math.max(24, laneW*0.34)};
 }
 
+// perspective scale for a note fraction (0 = at strike, 1 = spawn/top)
 const PERSP = 3.2;
 function scaleAt(frac){ return 1/(1+Math.max(0,frac)*PERSP); }
 const SCALE_TOP = scaleAt(1);
@@ -200,16 +202,19 @@ function projX(lane, frac){
 /* ============================================================
    STATE
    ============================================================ */
-const APPROACH = 1.55;
+const APPROACH = 1.55;         // seconds a note is visible before strike
 const WIN_PERFECT=0.045, WIN_GREAT=0.09, WIN_GOOD=0.145, WIN_MISS=0.145;
-const OFFSET = 0.00;
-let songT = 0;
-let clockRunning = false;
-let syncDone = false;
-let state = 'menu';
+const OFFSET = 0.00;           // audio latency calibration
+
+// ---- Master song clock (independent of audio so the game never freezes) ----
+let songT = 0;                 // authoritative song time (seconds)
+let clockRunning = false;      // advancing while playing
+let syncDone = false;          // have we locked the manual clock to audio yet
+
+let state = 'menu';            // menu | countdown | play | pause | results
 let difficulty = 'medium';
-let notes = [];
-let idxNext = 0;
+let notes = [];                // active chart {t,lane,hold, hit, missed, headHit, holdDone}
+let idxNext = 0;               // next note to consider spawning (for perf we just iterate visible)
 let startAudioBase = 0;
 let score=0, combo=0, maxCombo=0, mult=1, health=0.5;
 let od=0, odActive=false, odTime=0;
@@ -217,9 +222,9 @@ let judge={perfect:0,great:0,good:0,miss:0};
 let totalNotes=0, hitNotes=0, accWeighted=0;
 let particles=[], pops=[], laneFlash=[0,0,0,0], keyHeld=[false,false,false,false];
 let hitLineFlash=0, beatPulse=0;
-let hitGlow=[0,0,0,0];
-let beamGlow=[0,0,0,0];
-let shakeAmt=0, shakeT=0;
-let flowPhase=0;
+let hitGlow=[0,0,0,0];      // intense bloom at fret on hit
+let beamGlow=[0,0,0,0];     // lane light beam intensity
+let shakeAmt=0, shakeT=0;   // screen shake on miss
+let flowPhase=0;            // animates hold-note flow
 let lastComboMilestone=0;
 let songDur = CHART.duration || 300;
