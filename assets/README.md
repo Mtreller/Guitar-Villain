@@ -1,7 +1,7 @@
 # Audio asset
 
-Place the game track here as:
+Place the supplied game track in this folder with its original filename:
 
-`angels-mary-by-the-cross.mp3`
+`Angels - Mary by the cross.mp3`
 
-The game automatically loads `assets/angels-mary-by-the-cross.mp3` with metadata-only preload and falls back to a local file picker if the asset is unavailable.
+The game automatically loads `assets/Angels - Mary by the cross.mp3` with metadata-only preload and falls back to a local file picker if the asset is unavailable.
