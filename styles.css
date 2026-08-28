@@ -1,5 +1,4 @@
-
-  :root{
+:root{
     --bg0:#05060f;
     --bg1:#0b0d22;
     --bg2:#141a44;
@@ -132,3 +131,8 @@
   .f-note{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:11px;color:rgba(150,160,216,.45);}
   @media (max-width:400px){ #score{font-size:28px;} #multiplier{font-size:44px;} .btn{padding:15px 34px;} }
   @media (prefers-reduced-motion: reduce){ #odBtn{animation:none;} }
+
+.audio-status{margin-top:10px;min-height:18px;font:600 11px/1.4 "Chakra Petch",sans-serif;letter-spacing:.04em;color:var(--muted);}
+.audio-status[data-kind="ready"]{color:var(--aur2);}
+.audio-status[data-kind="error"]{color:var(--danger);}
+#playBtn:disabled{opacity:.62;cursor:wait;transform:none;}
