@@ -1,0 +1,183 @@
+/* ============================================================
+   ARCADE CONCERT SCREENS — visual pass 3
+   Poster/ticket menu + arcade scorecard results.
+   ============================================================ */
+
+.overlay{
+  background:
+    radial-gradient(90% 45% at 50% 8%,rgba(127,57,49,.28),transparent 70%),
+    linear-gradient(180deg,rgba(18,13,18,.83),rgba(8,8,12,.95));
+  backdrop-filter:none;
+}
+.overlay::before{
+  content:"";
+  position:absolute;inset:18px 14px;
+  border:1px solid rgba(229,184,128,.12);
+  border-radius:26px 18px 30px 20px;
+  pointer-events:none;
+  box-shadow:inset 0 0 70px rgba(175,87,54,.035);
+}
+
+.eyebrow{
+  color:#e9b877;
+  letter-spacing:.28em;
+  text-shadow:0 1px 0 #000;
+  margin-bottom:9px;
+}
+h1{
+  color:#fff1d5;
+  text-shadow:0 3px 0 rgba(72,37,27,.76),0 8px 24px rgba(0,0,0,.26);
+  letter-spacing:-.015em;
+}
+h1 .sub{
+  color:#d4a878;
+  letter-spacing:.16em;
+}
+.tagline{
+  color:rgba(237,217,187,.68);
+  max-width:320px;
+  margin-bottom:20px;
+}
+
+/* Difficulty cards read like worn gig passes/tickets. */
+.diffs{
+  gap:9px;
+  max-width:370px;
+}
+.diff{
+  min-height:94px;
+  border-radius:9px 16px 9px 16px;
+  border:1px solid rgba(221,178,124,.20);
+  border-left:3px solid rgba(221,178,124,.28);
+  background:
+    linear-gradient(145deg,rgba(68,43,39,.92),rgba(27,22,27,.96) 62%,rgba(15,15,20,.98));
+  box-shadow:0 7px 17px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);
+  padding:13px 13px 11px;
+}
+.diff::before{
+  content:"";
+  position:absolute;
+  width:13px;height:13px;
+  right:-7px;top:calc(50% - 6px);
+  border-radius:50%;
+  background:#0b0b10;
+  box-shadow:0 0 0 1px rgba(221,178,124,.14);
+}
+.diff:hover{transform:translateY(-1px) rotate(-.25deg);border-color:rgba(232,190,137,.42);}
+.diff.sel{
+  transform:translateY(-2px) rotate(.25deg);
+  border-color:rgba(247,191,99,.70);
+  border-left-color:#f1b75f;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(255,197,95,.14),transparent 30%),
+    linear-gradient(145deg,rgba(94,53,36,.94),rgba(43,29,34,.98) 58%,rgba(19,18,24,.99));
+  box-shadow:0 8px 20px rgba(0,0,0,.25),0 0 18px rgba(244,174,84,.10),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.diff .name{color:#fff0d1;font-size:16px;}
+.diff .meta{color:rgba(230,207,175,.56);}
+.diff .dots{gap:4px;}
+.diff .dots i{
+  height:5px;
+  border-radius:1px 5px 1px 5px;
+  background:rgba(238,211,173,.12);
+}
+.diff .dots i.on{background:linear-gradient(90deg,#d98354,#f2b968);box-shadow:0 0 5px rgba(240,166,91,.18);}
+.diff .diff-best{color:#e7b16b;}
+
+/* Main action resembles a cabinet/start button. */
+#playBtn,.btn:not(.ghost){
+  border-radius:24px 18px 25px 18px;
+  border:2px solid rgba(255,232,190,.55);
+  background:
+    radial-gradient(circle at 38% 22%,rgba(255,255,255,.82),transparent 22%),
+    linear-gradient(180deg,#efbf77,#c67846 62%,#8f482f);
+  color:#261714;
+  text-shadow:0 1px 0 rgba(255,239,205,.42);
+  box-shadow:0 8px 0 #5c3025,0 12px 22px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.45);
+}
+#playBtn:active,.btn:not(.ghost):active{
+  transform:translateY(5px) scale(.99);
+  box-shadow:0 3px 0 #5c3025,0 7px 12px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.34);
+}
+.btn.ghost{
+  border-radius:10px 15px 10px 15px;
+  background:linear-gradient(145deg,rgba(62,41,40,.92),rgba(23,20,25,.95));
+  border:1px solid rgba(225,181,126,.25);
+  color:#f0d7b5;
+}
+.audio-status{color:rgba(226,203,173,.54);}
+.controls-hint{color:rgba(226,203,173,.48);}
+.keycap{
+  background:rgba(75,47,42,.65);
+  border-color:rgba(224,179,123,.28);
+  color:#efd7b6;
+}
+
+/* Results: hero scorecard rather than dashboard grid. */
+#results{justify-content:center;}
+#results .eyebrow{margin-bottom:7px;}
+.result-head{
+  width:min(92%,370px);
+  gap:14px;
+  margin:0 0 12px;
+  padding:12px 16px;
+  border-radius:12px 22px 12px 22px;
+  border:1px solid rgba(230,184,126,.25);
+  background:linear-gradient(145deg,rgba(71,43,39,.94),rgba(24,21,27,.97));
+  box-shadow:0 8px 20px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.05);
+}
+#resultRank{
+  width:68px;height:68px;
+  border-radius:48% 52% 44% 56% / 54% 44% 56% 46%;
+  border:3px solid rgba(233,188,126,.42);
+  background:
+    radial-gradient(circle at 36% 28%,rgba(255,255,255,.16),transparent 25%),
+    linear-gradient(160deg,#5f3c36,#251d25 68%,#111117);
+  color:#fff0d2;
+  text-shadow:0 3px 0 rgba(73,38,28,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 5px 13px rgba(0,0,0,.25);
+}
+#resultRank[data-rank="S"]{color:#ffe39a;border-color:#eab55d;background:linear-gradient(160deg,#8a5a31,#4f3027 68%,#1c171a);}
+#resultRank[data-rank="A"]{color:#bff4e9;border-color:#71c8b4;}
+#resultBest{color:#d3a974;}
+.result-head .stars span{filter:grayscale(.65) brightness(.52);}
+.result-head .stars span.lit{filter:none;text-shadow:0 0 10px rgba(242,177,80,.45);}
+
+#results .res-grid{
+  grid-template-columns:repeat(2,minmax(115px,1fr));
+  max-width:360px;
+  width:100%;
+  gap:8px;
+  margin:0 0 16px;
+}
+#results .res-cell{
+  padding:9px 11px;
+  border-radius:7px 13px 7px 13px;
+  border-left:2px solid rgba(219,168,107,.28);
+  background:linear-gradient(135deg,rgba(57,38,38,.78),rgba(22,20,25,.76));
+}
+#results .res-cell .k{color:rgba(228,203,169,.48);letter-spacing:.13em;}
+#results .res-cell .v{color:#fff0d1;text-shadow:0 1px 0 #000;}
+.judge-legend{
+  padding:7px 10px;
+  border-top:1px solid rgba(224,177,119,.14);
+  border-bottom:1px solid rgba(224,177,119,.14);
+  color:rgba(231,206,172,.58);
+}
+
+@media (pointer:coarse){
+  .overlay{padding:24px 20px;}
+  .diffs{gap:8px;}
+  .diff{min-height:88px;padding:11px 12px 10px;}
+  #results .res-grid{gap:6px;}
+}
+
+@media (max-height:700px){
+  .tagline{margin-bottom:13px;font-size:12px;}
+  .diffs{margin-bottom:15px;}
+  .diff{min-height:76px;padding:9px 10px 8px;}
+  .diff .dots{margin-top:6px;}
+  #results .res-cell{padding:6px 9px;}
+  .result-head{padding:9px 12px;margin-bottom:8px;}
+  #resultRank{width:58px;height:58px;font-size:30px;}
+}
