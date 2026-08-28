@@ -1,0 +1,158 @@
+/* ============================================================
+   ARCADE CONCERT THEME — visual pass 1
+   Less glass-dashboard, more tactile concert/arcade object language.
+   ============================================================ */
+:root{
+  --warm-metal:#c58a5b;
+  --warm-edge:#f1c28c;
+  --cabinet:#241920;
+  --cabinet-2:#3a2527;
+  --paper:#f3e3c7;
+}
+
+#stage{
+  background:radial-gradient(95% 60% at 50% 18%,rgba(82,34,45,.35),rgba(5,6,15,0) 64%);
+}
+
+/* --- Score plaque: angled arcade marquee rather than naked HUD text --- */
+.score-wrap{
+  min-width:154px;
+  padding:9px 16px 10px 14px;
+  background:linear-gradient(145deg,rgba(74,41,39,.95),rgba(27,20,28,.96) 56%,rgba(15,15,22,.96));
+  border:1px solid rgba(241,194,140,.28);
+  border-left:3px solid rgba(241,194,140,.72);
+  clip-path:polygon(0 0,92% 0,100% 17%,96% 100%,4% 100%,0 80%);
+  box-shadow:0 8px 24px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.score-label{color:rgba(243,227,199,.60);letter-spacing:.19em;font-size:9px;}
+#score{color:#fff5df;text-shadow:0 2px 0 rgba(79,38,25,.6),0 0 14px rgba(238,154,91,.16);}
+#bestScore{color:rgba(241,194,140,.72);letter-spacing:.10em;}
+#scoreDelta{color:#fff3d9;text-shadow:0 2px 0 rgba(0,0,0,.45),0 0 12px rgba(255,184,105,.30);}
+
+/* --- Accuracy / pause become hardware controls --- */
+.right-top{gap:7px;}
+#pauseBtn{
+  width:42px;height:42px;border-radius:50%;
+  border:2px solid rgba(233,201,166,.30);
+  background:radial-gradient(circle at 35% 28%,rgba(94,65,67,.92),rgba(31,25,34,.98) 58%,rgba(12,12,18,.99));
+  box-shadow:0 5px 14px rgba(0,0,0,.33),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.acc-badge{
+  color:rgba(243,227,199,.70);
+  background:rgba(25,19,27,.80);
+  border:1px solid rgba(241,194,140,.18);
+  border-radius:9px;
+  padding:5px 8px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.acc-badge b{color:#fff1d6;}
+
+/* --- Compact physical meters under score --- */
+.meters{
+  left:16px;right:auto;top:106px;width:158px;gap:5px;
+  padding:7px 9px 8px;
+  border-radius:5px 12px 12px 5px;
+  border-left:2px solid rgba(197,138,91,.62);
+  background:linear-gradient(90deg,rgba(35,24,29,.94),rgba(18,17,24,.78));
+  box-shadow:0 7px 20px rgba(0,0,0,.20);
+}
+.meter-row{gap:6px;}
+.meter-tag{width:37px;color:rgba(243,227,199,.55);letter-spacing:.12em;font-size:8px;}
+.meter{height:8px;border-radius:4px;background:#0b0c11;border:1px solid rgba(241,194,140,.17);box-shadow:inset 0 2px 3px rgba(0,0,0,.65);}
+.meter > i{border-radius:3px;transition:transform .13s linear;}
+#healthFill{background:linear-gradient(90deg,#d84d46,#f0a04c 48%,#61cc78);box-shadow:none;}
+#odFill{background:linear-gradient(90deg,#4bcbbd,#8b71d4,#efbd6c);box-shadow:0 0 8px rgba(88,214,194,.34);}
+
+/* --- Multiplier is now a badge, not floating typography --- */
+#comboWrap{
+  left:18px;right:auto;top:172px;align-items:flex-start;text-align:left;
+  width:122px;padding:7px 8px 9px;
+  border-radius:9px 18px 18px 9px;
+  background:linear-gradient(150deg,rgba(61,37,38,.90),rgba(20,18,26,.90));
+  border:1px solid rgba(241,194,140,.19);
+  box-shadow:0 8px 22px rgba(0,0,0,.19);
+}
+#comboStatus{color:rgba(238,197,141,.78);font-size:8px;letter-spacing:.13em;}
+#multiplier{
+  font-size:46px;line-height:.92;color:#fff1d0;background:none;-webkit-text-fill-color:initial;
+  text-shadow:0 2px 0 rgba(85,43,25,.7),0 0 14px rgba(255,196,112,.20);
+  filter:none;
+}
+#comboNum{font-size:10px;letter-spacing:.12em;color:rgba(243,227,199,.58);}
+.mult-ladder{width:98px;height:6px;margin-top:7px;background:#0c0c12;border:1px solid rgba(241,194,140,.18);}
+#multProgress{background:linear-gradient(90deg,#d7854e,#f2ca78,#7cdcc2);box-shadow:none;}
+#multHint{font-size:7px;color:rgba(243,227,199,.46);letter-spacing:.07em;}
+
+/* --- Reward callout becomes a stamped arcade plaque --- */
+#rewardBanner{
+  top:152px;width:min(74%,320px);padding:9px 15px;border-radius:6px 16px 6px 16px;
+  border:1px solid rgba(241,194,140,.34);
+  background:linear-gradient(145deg,rgba(78,43,41,.95),rgba(24,19,27,.94));
+  box-shadow:0 7px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:none;
+}
+#rewardTitle{font-size:15px;color:#fff0d2;letter-spacing:.055em;}
+#rewardSub{color:rgba(243,227,199,.57);}
+
+/* --- Angel Power: unmistakable physical trigger --- */
+#odBtn{
+  border-radius:999px;
+  border:2px solid rgba(241,194,140,.48);
+  color:#fff2d6;
+  background:linear-gradient(180deg,rgba(91,54,56,.98),rgba(39,28,39,.99));
+  box-shadow:0 7px 18px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.16),0 0 0 4px rgba(23,18,27,.58);
+  letter-spacing:.07em;
+}
+#odBtn::before{content:'✦';margin-right:7px;color:#f3ca78;text-shadow:0 0 8px rgba(243,202,120,.45);}
+#odBtn.ready{border-color:#f4cb75;background:linear-gradient(180deg,#7f5a43,#453041);box-shadow:0 8px 20px rgba(0,0,0,.32),0 0 20px rgba(244,203,117,.22),inset 0 1px 0 rgba(255,255,255,.18),0 0 0 4px rgba(29,20,26,.65);}
+#odBtn.on{border-color:#77dbc7;background:linear-gradient(180deg,#416b67,#3c3159);box-shadow:0 8px 20px rgba(0,0,0,.32),0 0 22px rgba(119,219,199,.23),inset 0 1px 0 rgba(255,255,255,.18),0 0 0 4px rgba(26,22,36,.66);}
+
+/* --- Menus become concert posters/cards instead of glass components --- */
+.overlay{
+  background:
+    radial-gradient(90% 60% at 50% 12%,rgba(105,46,50,.76),rgba(28,18,28,.94) 56%,rgba(8,8,13,.98) 100%),
+    repeating-linear-gradient(105deg,rgba(255,255,255,.018) 0 1px,transparent 1px 5px);
+  backdrop-filter:none;
+}
+.eyebrow{color:#efc884;letter-spacing:.28em;}
+h1{color:#fff0d8;text-shadow:0 3px 0 rgba(83,38,30,.45),0 0 28px rgba(227,144,87,.14);}
+h1 .sub{color:rgba(239,211,174,.62);}
+.tagline{color:rgba(243,227,199,.64);}
+.diff{
+  border:1px solid rgba(241,194,140,.22);border-radius:8px 18px 8px 18px;
+  background:linear-gradient(145deg,rgba(65,39,39,.88),rgba(24,20,28,.94));
+  box-shadow:0 9px 22px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.045);
+}
+.diff:hover{border-color:rgba(241,194,140,.48);transform:translateY(-1px) rotate(-.25deg);}
+.diff.sel{border-color:#efbd76;background:linear-gradient(145deg,rgba(102,55,44,.95),rgba(39,27,38,.97));box-shadow:0 0 0 2px rgba(239,189,118,.12),0 12px 26px rgba(0,0,0,.24);}
+.diff .dots i.on{background:linear-gradient(90deg,#d98250,#efc778);}
+.btn{
+  border-radius:8px 18px 8px 18px;color:#24191d;
+  background:linear-gradient(180deg,#ffe4ad,#e2a962);
+  box-shadow:0 9px 0 #7b4936,0 14px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.62);
+}
+.btn:active{transform:translateY(5px);box-shadow:0 4px 0 #7b4936,0 8px 16px rgba(0,0,0,.24);}
+.btn.ghost{background:linear-gradient(180deg,rgba(74,48,48,.94),rgba(31,24,31,.96));color:#f4dfbf;border:1px solid rgba(241,194,140,.24);}
+
+/* --- Results: scorecard, not analytics dashboard --- */
+#resultRank{border-radius:8px 18px 8px 18px;border-color:rgba(241,194,140,.32);background:linear-gradient(145deg,rgba(91,52,43,.92),rgba(27,23,31,.96));color:#ffe2a5;}
+#results .res-cell{border-radius:7px 14px 7px 14px;background:rgba(74,45,43,.26);border:1px solid rgba(241,194,140,.10);}
+#results .res-cell .k{color:rgba(243,227,199,.50);}
+#results .res-cell .v{color:#fff0d5;}
+.stars span.lit{text-shadow:0 0 16px rgba(244,193,96,.50);}
+
+#songTag{color:rgba(238,210,174,.34);}
+.f-note{display:none;}
+
+@media (pointer:coarse){
+  .score-wrap{padding:8px 14px 9px 12px;min-width:146px;}
+  .meters{top:102px;width:148px;}
+  #comboWrap{top:166px;width:112px;}
+  #multiplier{font-size:42px;}
+  #rewardBanner{top:150px;}
+}
+@media (max-height:700px){
+  .meters{top:96px;transform:scale(.92);transform-origin:top left;}
+  #comboWrap{top:152px;transform:scale(.92);transform-origin:top left;}
+  #rewardBanner{top:132px;}
+}
